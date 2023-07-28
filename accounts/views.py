@@ -3,6 +3,7 @@ from .utils import detectUser,send_verification_email
 
 from vendor.forms import VendorForm
 from .models import User,UserProfile
+from vendor.models import Vendor
 # Create your views here.
 from .forms import UserForm
 from django.contrib import messages,auth
@@ -148,6 +149,7 @@ def dashboard(request):
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
 def vendorDashboard(request):
+    
     return render(request,'accounts/vendorDashboard.html')
 def forgot_password(request):
     if request.method=='POST':
