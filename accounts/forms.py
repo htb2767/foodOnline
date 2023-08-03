@@ -25,7 +25,7 @@ class UserProfileForm(forms.ModelForm):
     address=forms.CharField(widget=forms.TextInput(attrs={'placeholder':'Start Typing...','required':'required'}))
     class Meta:
         model=UserProfile
-        fields=['profile_picture','cover_picture','address','country','city','pin_code','latitude','longtitude']
+        fields=['profile_picture','cover_picture','address','country','state','city','pin_code','latitude','longtitude']
         #def __init__(self,*args,**kwargs):
             #super(UserProfileForm,self).__init__(*args,**kwargs)
             #for field in self.fields:
