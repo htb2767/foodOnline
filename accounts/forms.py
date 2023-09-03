@@ -26,10 +26,14 @@ class UserProfileForm(forms.ModelForm):
     class Meta:
         model=UserProfile
         fields=['profile_picture','cover_picture','address','country','state','city','pin_code','latitude','longtitude']
-        #def __init__(self,*args,**kwargs):
-            #super(UserProfileForm,self).__init__(*args,**kwargs)
-            #for field in self.fields:
-                #if field=='latitude' or field=='longtitude':
-                    #self.fields[field].widget.attrs['readonly']='readonly'
+        def __init__(self,*args,**kwargs):
+            super(UserProfileForm,self).__init__(*args,**kwargs)
+            for field in self.fields:
+                if field=='latitude' or field=='longtitude':
+                    self.fields[field].widget.attrs['readonly']='readonly'
+class UserInfoForm(forms.ModelForm):
+    class Meta:
+        model=User
+        fields=['first_name','last_name','phone_number']
 
 
