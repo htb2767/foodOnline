@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'marketplace',
     'django.contrib.gis',
     'customers',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'marketplace.context_processors.get_cart_counter',
                 'marketplace.context_processors.get_cart_amount',
                 'accounts.context_processor.get_user_profile',
+                'accounts.context_processor.get_paypal_client_id',
 
             ],
         },
@@ -156,7 +158,9 @@ EMAIL_HOST_USER=config('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD=config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS=True
 DEFAULT_FROM_EMAIL='FoodOnline Marketplace <buithihuong2710@gmail.com>'
-GOOGLE_API_KEY='AIzaSyD3gdaD18mw0mcppUJp8jqLgh6T8zlLIdE'
+GOOGLE_API_KEY=config('GOOGLE_API_KEY')
+PAYPAL_CLIENT_ID=config('PAYPAL_CLIENT_ID')
+SECURE_CROSS_ORIGIN_OPENER_POLICY = 'same-origin-allow-popups'
 if os.name == 'nt':
     OSGEO4W = r"C:\OSGeo4W"
     
