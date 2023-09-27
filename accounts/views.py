@@ -1,4 +1,6 @@
 from django.shortcuts import render,redirect
+
+from orders.models import Order
 from .utils import detectUser,send_verification_email
 
 from vendor.forms import VendorForm
@@ -148,7 +150,14 @@ def myAccount(request):
 @login_required(login_url='login')
 @user_passes_test(check_role_customer)
 def dashboard(request):
-    return render(request,'accounts/dashboard.html')
+    orders=Order.objects.filter(user=request.user,is_ordered=True)
+    recent_orders=orders[:5]
+    context={
+        'orders':orders,
+        'orders_count':orders.count(),
+        'recent_orders':recent_orders,
+    }
+    return render(request,'accounts/dashboard.html',context)
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
 def vendorDashboard(request):
