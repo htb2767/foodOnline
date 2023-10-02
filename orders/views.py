@@ -143,7 +143,7 @@ def payments(request):
             'ordered_food':ordered_food,
             'domain':get_current_site(request),
             'customer_subtotal':customer_subtotal,
-            'tax_data':tax_data
+            'tax_data':tax_data,
 
         }
         send_notification(mail_subject,mail_template,context)
