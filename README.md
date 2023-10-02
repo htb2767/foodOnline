@@ -31,9 +31,7 @@ Start the development server:
 ```bash
 python manage.py runserver
 ```
-#### Usage
 
-Explain how users can interact with your platform, including user registration, vendor registration, and using the various features.
 ## Usage
 
 - **User Registration**: Users can create accounts to place orders and manage their profiles. 
